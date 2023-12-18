@@ -4,20 +4,20 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 
-#from checkout.models import Order
+from orders.models import Order
 from .forms import CreationForm
 
-# @login_required
-# def user_orders(request):
-#     """
-#     Представление списка заказов пользователя.
-#     """
-#     orders = Order.objects.filter(user=request.user)
-#     context = {
-#         'orders': orders,
-#     }
-#     return render(request, 'users/user_orders.html', context)
-#
+@login_required
+def user_orders(request):
+    """
+    Представление списка заказов пользователя.
+    """
+    orders = Order.objects.filter(user=request.user)
+    context = {
+        'orders': orders,
+    }
+    return render(request, 'users/user_orders.html', context)
+
 
 
 @login_required

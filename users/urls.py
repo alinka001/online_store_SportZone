@@ -7,14 +7,13 @@ from django.contrib.auth.views import (LoginView, LogoutView,
                                        PasswordResetView)
 from django.urls import path, reverse_lazy
 
-from .views import SignUp, feedback_processing, profile, user_orders
+from .views import SignUp, profile, user_orders
 
 app_name = 'users'
 
 urlpatterns = [
     path('orders/', user_orders, name='user_orders'),
     path('profile/', profile, name='profile'),
-    path('feedback-processing/', feedback_processing, name='feedback_processing'),
     path(
         'auth/logout/',
         LogoutView.as_view(template_name='users/logged_out.html'),

@@ -16,7 +16,7 @@ def order(request):
     form = OrderCreateForm()
     context = {'cart': cart, 'form': form}
 
-    return render(request, 'checkout/checkout.html', context)
+    return render(request, 'orders/checkout.html', context)
 
 
 @login_required
@@ -25,7 +25,7 @@ def thank_you(request, order_id):
     Страница благодарности за заказ.
     """
     order = get_object_or_404(Order, id=order_id, user=request.user)
-    return render(request, 'checkout/thank_you.html', {'order': order})
+    return render(request, 'orders/thank_you.html', {'order': order})
 
 
 @login_required
@@ -37,7 +37,7 @@ def create_order(request):
     """
     cart = get_object_or_404(Cart, user=request.user)
 
-    if cart.items.exists() and request.method == 'POST':
+    if cart.products.exists() and request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
             order = Order.objects.create(
@@ -55,7 +55,7 @@ def create_order(request):
                 order=order,
             )
 
-            for cart_item in cart.items.all():
+            for cart_item in cart.products.all():
                 OrderProduct.objects.create(
                     order=order,
                     item=cart_item.item,
@@ -70,4 +70,4 @@ def create_order(request):
     messages.warning(
         request, 'Форма не была корректно обработана, введите данные еще раз')
     context = {'form': form, 'cart': cart}
-    return render(request, 'checkout/checkout.html', context)
+    return render(request, 'orders/checkout.html', context)

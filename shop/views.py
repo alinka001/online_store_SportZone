@@ -14,8 +14,8 @@ def shop(request):
     return render(request, 'shop/main_page.html', context)
 
 
-def product_details(request, item_slug):
-    item = get_object_or_404(Product, slug=item_slug)
+def product_details(request, product_slug):
+    item = get_object_or_404(Product, slug=product_slug)
     context = {
         'item': item,
     }
@@ -33,7 +33,7 @@ def product_details(request, item_slug):
 
 
 def subcategory_list(request):
-    tags = Product.objects.all()
+    tags = SubCategory.objects.all()
     context = {
         'page_obj': paginator(request, tags, 6),
     }

@@ -31,12 +31,12 @@ def add_to_cart(request, product_slug):
     Представление для добавления товара в корзину
     либо увеличения его количества на 1.
     """
-    item = get_object_or_404(Product, slug=product_slug)
+    product = get_object_or_404(Product, slug=product_slug)
     cart, _ = Cart.objects.get_or_create(user=request.user)
 
     cart_item, created = CartProduct.objects.get_or_create(
         cart=cart,
-        item=item
+        item=product
     )
     if not created:
         cart_item.quantity += 1
