@@ -1,26 +1,40 @@
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+
+# сделать чтобы для товара выбиралось только нужная подкатегория
+#из категорий
 
 
 class Category(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название',)
 
+    def __str__(self):
+        return self.title
+
+    # def get_subcategory(self):
+    #     subcategory_objects = SubCategory.objects.filter(subcategory_category=self)
+    #     return subcategory_objects
+
     class Meta:
-        verbose_name = _("Категория")
-        verbose_name_plural = _("Категории")
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
 
 
 class SubCategory(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to='categories/', verbose_name='Изображение', blank=True)
     title = models.CharField(max_length=200, verbose_name='Название', )
 
+    def __str__(self):
+        return self.title
+
     class Meta:
-        verbose_name = _("Подкатегория")
-        verbose_name_plural = _("Подкатегории")
+        verbose_name = 'Подкатегория'
+        verbose_name_plural = 'Подкатегории'
 
 
 class Product(models.Model):
-    sub_category = models.ForeignKey(SubCategory, related_name='products', on_delete=models.CASCADE)
+    sub_category = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200, verbose_name='Название',)
     description = models.TextField(verbose_name='Описание',)
     slug = models.CharField(unique=True, max_length=50)
