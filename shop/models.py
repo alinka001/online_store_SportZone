@@ -33,7 +33,7 @@ class SubCategory(models.Model):
 
 
 class Product(models.Model):
-    sub_category = models.ForeignKey(SubCategory, verbose_name='Категория', on_delete=models.CASCADE)
+    sub_category = models.ForeignKey(SubCategory, verbose_name='Подкатегория', on_delete=models.CASCADE)
     # category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200, verbose_name='Название',)
     description = models.TextField(verbose_name='Описание',)
