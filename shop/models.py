@@ -20,7 +20,7 @@ class Category(models.Model):
 
 
 class SubCategory(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Категория', default=1)
     image = models.ImageField(upload_to='categories/', verbose_name='Изображение', blank=True)
     title = models.CharField(max_length=200, verbose_name='Название', )
 
@@ -33,8 +33,8 @@ class SubCategory(models.Model):
 
 
 class Product(models.Model):
-    sub_category = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    sub_category = models.ForeignKey(SubCategory, verbose_name='Категория', on_delete=models.CASCADE)
+    # category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=200, verbose_name='Название',)
     description = models.TextField(verbose_name='Описание',)
     slug = models.CharField(unique=True, max_length=50)
