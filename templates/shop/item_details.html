@@ -9,7 +9,7 @@
     {% if not forloop.last %},{% endif %}
 {% endfor %}
 </p>
-{% if item.image %}
+{% if product.image %}
     <p><span class="image left"><img src="{{ product.image.url }}" alt="" style="max-width: 200px; max-height: 200px;"/>
 {% else %}
     <p><span class="image left"><img src="{% static "img/pic14.jpg" %}" alt="" />

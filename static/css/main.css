@@ -1,4 +1,4 @@
-/*@import url(fontawesome-all.min.css);*/
+@import url(../../../../../../online_store_SportZone/static/css/fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
 
 /*
@@ -79,7 +79,7 @@ input, select, textarea {
     font-size: 14px;
     margin-top: 5px;
   }
-
+  
   .error-message span {
     display: block;
     margin-bottom: 5px;
@@ -101,11 +101,11 @@ input, select, textarea {
     align-items: center;
     z-index: 9999;
   }
-
+  
   .messages-container.show {
     opacity: 1;
   }
-
+  
   .messages-container.hide {
     opacity: 0;
   }
@@ -1339,3 +1339,4 @@ input, select, textarea {
 		margin: 0 auto;
 		padding: 0 2.5em;
 	}
+
