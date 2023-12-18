@@ -3,8 +3,8 @@
     <div class="inner">
         <!-- Logo -->
         <div class="logo_phone">
-          <a href="{% url 'store:home' %}" class="logo">
-            <span class="symbol"><img src="{% static "images/logo3.png" %}" alt="" /></span>
+          <a href="{% url 'shop:home' %}" class="logo">
+            <span class="symbol"><img src="{% static "img/logo3.png" %}" alt="" /></span>
               <span class="title">SportZone</span>
         </a>
             <div class="phoneWrap">
@@ -22,10 +22,10 @@
             <ul class="actions">
                 <li>
                     <a href="{% url 'cart:cart' %}">
-                    <img src ="{% static "images/cart.jpg" %}" width="40" height="40" ></a>
+                    <img src ="{% static "img/cart.jpg" %}" width="40" height="40" ></a>
                     <br>
                     <a href="{% url 'users:profile' %}">
-                    <img src ="{% static "images/profile.png" %}" width="40" height="40" ></a>
+                    <img src ="{% static "img/profile.png" %}" width="40" height="40" ></a>
                 </li>
             </ul>
         </nav>
@@ -35,7 +35,7 @@
 <nav id="menu">
     <h2>Меню</h2>
     <ul>
-        <li><a href="{% url 'store:tag_list' %}">Все категории</a></li>
+        <li><a href="{% url 'shop:tag_list' %}">Все категории</a></li>
         <li><a href="{% url 'about:about_me' %}">О Компании</a></li>
     </ul>
 </nav>
