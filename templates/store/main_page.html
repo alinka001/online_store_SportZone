@@ -48,30 +48,30 @@
 {#    </section>#}
 
 <section class="tiles">
-    {% for product in page_obj %}
-    <article class="style{{ range|random }}">
+    {% for item in page_obj %}
+    <article class="cart">
         <span class="image">
-        {% if product.image %}
-            <img src="{{ product.image.url }}" alt="" style="width: 353px; height: 326px;" />
+        {% if item.image %}
+            <img src="{{ item.image.url }}" alt="" style="width: 353px; height: 326px;" />
         {% else %}
-            <img src="{% static "img/pic01.jpg" %}" alt="" />
+            <img src="{% static "images/pic01.jpg" %}" alt="" />
         {% endif %}
         </span>
-        <a href="{% url 'shop:item_details' product.slug %}">
+        <a href="{% url 'store:item_details' item.slug %}">
             <div class="tag">
-                <object> 
-                    {% for tag in product.tags.all %}
-                        <a href="{% url 'shop:tag_details' tag.slug %}" style="color: white">{{ tag }}</a>
+                <object>
+                    {% for tag in item.tags.all %}
+                        <a href="{% url 'store:tag_details' tag.slug %}" style="color: white">{{ tag }}</a>
                         {% if not forloop.last %},{% endif %}
                     {% endfor %}
                 </object><br />
             </div>
-            <h2>{{ product.title }}</h2>
+            <h2>{{ item.title }}</h2>
             <div class="content">
-                <p>{{ product.description|truncatechars:150 }}</p>
+                <p>{{ item.description|truncatechars:150 }}</p>
             </div>
         </a>
     </article>
     {% endfor %}
 </section>
-{% endblock %} 
+{% endblock %}

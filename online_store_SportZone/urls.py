@@ -9,7 +9,7 @@ urlpatterns = [
     path('cart/', include('cart.urls')),
     path('checkout/', include('orders.urls')),
     path('users/', include('users.urls')),
-    path('', include('shop.urls')),
+    path('', include('store.urls')),
     path('', include('django.contrib.auth.urls'))
 ]
 

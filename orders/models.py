@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-from shop.models import Product
+from store.models import Item
 
 
 class Order(models.Model):
@@ -54,15 +54,15 @@ class Order(models.Model):
         return f"Заказ номер {self.id} для {self.user}"
 
 
-class OrderProduct(models.Model):
+class OrderItem(models.Model):
     order = models.ForeignKey(
         Order,
         on_delete=models.CASCADE,
         related_name='items',
         verbose_name='Заказ',
     )
-    product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, verbose_name='Товар',)
+    item = models.ForeignKey(
+        Item, on_delete=models.CASCADE, verbose_name='Товар',)
     quantity = models.PositiveIntegerField(
         default=1, verbose_name='Количество',)
     price = models.DecimalField(
@@ -74,11 +74,11 @@ class OrderProduct(models.Model):
 
     @property
     def total_price(self):
-        total_price = self.quantity * self.product.price
+        total_price = self.quantity * self.item.price
         return total_price
 
     def __str__(self):
-        return f"{self.quantity} x {self.product.title} in Order {self.order.id}"
+        return f"{self.quantity} x {self.item.title} in Order {self.order.id}"
 
 
 class ShippingAddress(models.Model):

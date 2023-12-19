@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
-from shop.models import Product
-from .models import Cart, CartProduct
+from store.models import Item
+from .models import Cart, CartItem
 
 
 @login_required
@@ -18,7 +18,7 @@ def cart(request):
         cart = Cart.objects.create(user=request.user)
 
     context = {
-        'cart_items': CartProduct.objects.filter(cart=cart),
+        'cart_items': CartItem.objects.filter(cart=cart),
         'cart': cart
     }
 
@@ -26,17 +26,17 @@ def cart(request):
 
 
 @login_required
-def add_to_cart(request, product_slug):
+def add_to_cart(request, item_slug):
     """
     Представление для добавления товара в корзину
     либо увеличения его количества на 1.
     """
-    product = get_object_or_404(Product, slug=product_slug)
+    item = get_object_or_404(Item, slug=item_slug)
     cart, _ = Cart.objects.get_or_create(user=request.user)
 
-    cart_item, created = CartProduct.objects.get_or_create(
+    cart_item, created = CartItem.objects.get_or_create(
         cart=cart,
-        item=product
+        item=item
     )
     if not created:
         cart_item.quantity += 1
@@ -45,20 +45,20 @@ def add_to_cart(request, product_slug):
 
 
 @login_required
-def delete_cart_product(request, product_slug):
+def delete_cart_item(request, item_slug):
     """
     Представление для удаления объекта товара в корзине.
     """
-    cart_item = CartProduct.objects.get(
+    cart_item = CartItem.objects.get(
         cart=Cart.objects.get(user=request.user),
-        item=get_object_or_404(Product, slug=product_slug)
+        item=get_object_or_404(Item, slug=item_slug)
     )
     cart_item.delete()
     return redirect('cart:cart')
 
 
 @login_required
-def update_cart_product(request):
+def update_cart_item(request):
     """
     Представление для обработки AJAX-запроса
     и последущего обновления БД и отправки на
@@ -70,7 +70,7 @@ def update_cart_product(request):
         cart_id = int(request.POST.get('cart_id'))
 
         cart = Cart.objects.get(pk=cart_id)
-        cart_item = get_object_or_404(CartProduct, id=cart_item_id)
+        cart_item = get_object_or_404(CartItem, id=cart_item_id)
         cart_item.quantity = new_quantity
         cart_item.save()
         return JsonResponse({

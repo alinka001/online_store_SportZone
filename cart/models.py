@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-from shop.models import Product
+from store.models import Item
 
 
 class Cart(models.Model):
@@ -20,25 +20,25 @@ class Cart(models.Model):
 
     @property
     def total_price(self):
-        total_price = sum(item.total_price for item in self.products.all())
+        total_price = sum(item.total_price for item in self.items.all())
         return total_price
 
     def __str__(self):
         return f"Cart {self.id} for {self.user.username}"
 
     def clear(self):
-        self.products.all().delete()
+        self.items.all().delete()
 
 
-class CartProduct(models.Model):
+class CartItem(models.Model):
     cart = models.ForeignKey(
         Cart,
         on_delete=models.CASCADE,
-        related_name='products',
+        related_name='items',
         verbose_name='Корзина',
     )
-    product = models.ForeignKey(
-        Product,
+    item = models.ForeignKey(
+        Item,
         on_delete=models.CASCADE,
         verbose_name='Товар',
     )
@@ -51,8 +51,8 @@ class CartProduct(models.Model):
 
     @property
     def total_price(self):
-        total_price = self.quantity * self.product.price
+        total_price = self.quantity * self.item.price
         return total_price
 
     def __str__(self):
-        return f"{self.quantity} x {self.product.title}"
+        return f"{self.quantity} x {self.item.title}"

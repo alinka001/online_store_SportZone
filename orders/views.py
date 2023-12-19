@@ -4,11 +4,11 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from cart.views import Cart
 from .forms import OrderCreateForm
-from .models import Order, OrderProduct, ShippingAddress
+from .models import Order, OrderItem, ShippingAddress
 
 
 @login_required
-def order(request):
+def checkout(request):
     """
     Представление чекаута.
     """
@@ -37,7 +37,7 @@ def create_order(request):
     """
     cart = get_object_or_404(Cart, user=request.user)
 
-    if cart.products.exists() and request.method == 'POST':
+    if cart.items.exists() and request.method == 'POST':
         form = OrderCreateForm(request.POST)
         if form.is_valid():
             order = Order.objects.create(
@@ -55,8 +55,8 @@ def create_order(request):
                 order=order,
             )
 
-            for cart_item in cart.products.all():
-                OrderProduct.objects.create(
+            for cart_item in cart.items.all():
+                OrderItem.objects.create(
                     order=order,
                     item=cart_item.item,
                     quantity=cart_item.quantity,

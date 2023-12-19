@@ -68,7 +68,7 @@
         </div>
       {% else %}
         Корзина пустая
-        <a href="{% url 'shop:home' %}"  style="margin-bottom: 100px; margin-top: 50px;" class="button">Вернуться на главную</a>
+        <a href="{% url 'store:home' %}"  style="margin-bottom: 100px; margin-top: 50px;" class="button">Вернуться на главную</a>
       {% endif %}
       <div><h2>Выберите способ оплаты</h2></div>
       {{ form.payment_method }}
