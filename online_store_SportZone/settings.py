@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'orders',
     'cart',
     'fontawesomefree',
+    'favs',
 
 ]
 
