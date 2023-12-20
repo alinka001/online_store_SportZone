@@ -14,14 +14,17 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
-		<link rel="icon" href="{% static "images/logo.svg" %}" >
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+     <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+     <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+{#    <link#}
+{#      rel="stylesheet"#}
+{#      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"#}
+{#		<link rel="icon" href="{% static "images/logo.svg" %}" >#}
+{#		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />#}
 		<link rel="stylesheet" href="{% static "css/main.css"%}" />
-		<noscript><link rel="stylesheet" href="{% static "css/noscript.css"%}" /></noscript>
-    <link rel="stylesheet" href="{% static "index/index.css"%}">
+{#    <link rel="stylesheet" href="{% static "index/index.css"%}">#}
 		{% block css %}
 		{% endblock %}
 

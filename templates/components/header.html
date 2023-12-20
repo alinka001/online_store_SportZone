@@ -4,33 +4,28 @@
         <!-- Logo -->
         <div class="logo_phone">
           <a href="{% url 'store:home' %}" class="logo">
-            <span class="symbol"><img src="{% static "images/logo3.png" %}" alt="" /></span><span class="title">SportZone</span>
+            <span class="symbol"><img src="{% static "images/logo3.png" %}" alt="" /></span>
+              <span class="title">SportZone</span>
         </a>
 
         </div>
 
         <!-- Nav -->
         <nav>
-            <ul>
-                <li><a href="#menu">Menu</a></li>
-            </ul>
-            <br>
-            <ul class="actions">
-                <li>
+            <ul class="hz-kak-nazvat">
+
+                    <li><a href="{% url 'store:tag_list' %}">Все категории</a></li>
+
+{#                   <li> <a href="{% url 'cart:cart' %}">#}
+                    <img src ="{% static "images/heart-regular.svg" %}" width="40" height="40" ></a></li>
+
                     <a href="{% url 'cart:cart' %}">
-                    <img src ="{% static "images/cart.jpg" %}" width="40" height="40" ></a>
-                    <br>
-                    <a href="{% url 'users:profile' %}">
-                    <img src ="{% static "images/profile.png" %}" width="40" height="40" ></a>
-                </li>
+                    <img src ="{% static "images/cart-shopping-solid.svg" %}" width="40" height="40" ></a>
+
+                   <a href="{% url 'users:profile' %}">
+                    <img src ="{% static "images/circle-user-solid.svg" %}" width="40" height="40" ></a>
+
             </ul>
         </nav>
     </div>
 </header>
-<!-- Menu -->
-<nav id="menu">
-    <h2>Меню</h2>
-    <ul>
-        <li><a href="{% url 'store:tag_list' %}">Все категории</a></li>
-    </ul>
-</nav>
