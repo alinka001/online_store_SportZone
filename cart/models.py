@@ -5,14 +5,8 @@ from store.models import Item
 
 
 class Cart(models.Model):
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='carts',
-        verbose_name='Покупатель',
-    )
-    created_at = models.DateTimeField(
-        auto_now_add=True, verbose_name='Дата создания',)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='carts', verbose_name='Покупатель',)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания',)
 
     class Meta:
         verbose_name = 'Корзина'

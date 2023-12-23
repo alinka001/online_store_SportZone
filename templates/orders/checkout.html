@@ -16,7 +16,7 @@
   </ul>
 </div>
 {% endif %}
-<form method="post" action="{% url 'order:create_order'%}">
+<form method="post" action="{% url 'checkout:create_order'%}">
   {% csrf_token %}
   <section>
   <div class="row">
@@ -37,7 +37,7 @@
     </div>
     <div class="col-md-4" style="width: 40%;">
       <h2>Ваш заказ</h2>
-      {% if cart.products.exists %}
+      {% if cart.items.exists %}
         <div class="table-wrapper">
           <table class="alt">
             <thead>
@@ -88,9 +88,9 @@
 </form>
 {% endblock %}
 
-{% block js %}
-<script src={% static "assets/js/checkout.js"%}></script>
-<!-- PayPal JavaScript SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
-<script src={% static "assets/js/payment.js"%}></script>
-{% endblock %}
+{#{% block js %}#}
+{#<script src={% static "assets/js/checkout.js"%}></script>#}
+{#<!-- PayPal JavaScript SDK -->#}
+{#<script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>#}
+{#<script src={% static "assets/js/payment.js"%}></script>#}
+{#{% endblock %}#}
