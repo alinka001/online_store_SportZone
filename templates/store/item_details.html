@@ -16,6 +16,8 @@
 {% endif %}
     <a href="{% url 'cart:add_to_cart' item.slug %}" class="button small" style="margin-top:10px;">
         Добавить в корзину</a>
+    <a href="{% url 'favs:add_to_favorites' item.slug %}" class="button small" style="margin-top:10px;">
+            Добавить в избранное</a>
     </span>
     {{ item.description }}{{ item.description }}
 </p>

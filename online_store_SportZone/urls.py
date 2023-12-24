@@ -10,7 +10,8 @@ urlpatterns = [
     path('checkout/', include('orders.urls')),
     path('users/', include('users.urls')),
     path('', include('store.urls')),
-    path('', include('django.contrib.auth.urls'))
+    path('', include('django.contrib.auth.urls')),
+    path('favorites', include('favs.urls')),
 ]
 
 if settings.DEBUG:

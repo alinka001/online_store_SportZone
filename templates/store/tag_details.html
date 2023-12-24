@@ -17,6 +17,8 @@
         <a href="{% url 'cart:add_to_cart' item.slug %}" class="button small" style="margin-top:10px;">
             Добавить в корзину</a>
         </span>
+    <a href="{% url 'favs:add_to_favorites' item.slug %}" class="button small" style="margin-top:10px;">
+            Добавить в избранное</a>
     </p>
     <p>{{ item.description }}</p>
     {% if item.old_price %}
@@ -26,5 +28,6 @@
         <p>Цена: <b>{{ item.price }}</b> рублей </p>
     {% endif %}
     {% if not forloop.last %}<hr>{% endif %}
+
 {% endfor %}
 {% endblock %} 

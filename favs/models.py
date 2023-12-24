@@ -23,4 +23,4 @@ class FavoritesItem(models.Model):
         verbose_name_plural = 'Товары в избранном'
 
     def __str__(self):
-        return f"{self.item.title} in Order {self.favorites.id}"
+        return f"{self.item.title} in Favorites {self.favorites.id}"
