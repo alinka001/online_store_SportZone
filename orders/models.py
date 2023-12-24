@@ -17,27 +17,10 @@ class Order(models.Model):
         ('delivered', 'Доставлен'),
         ('canceled', 'Отменен'),
     ]
-    payment_method = models.CharField(
-        max_length=20,
-        choices=PAYMENT_METHOD_CHOICES,
-        verbose_name='Способ оплаты',
-    )
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='orders',
-        verbose_name='Покупатель',
-    )
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='Дата создания',
-    )
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='created',
-        verbose_name='Статус',
-    )
+    payment_method = models.CharField(max_length=20, choices=PAYMENT_METHOD_CHOICES, verbose_name='Способ оплаты')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders', verbose_name='Покупатель')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='created', verbose_name='Статус')
 
     class Meta:
         verbose_name = 'Заказ'
@@ -55,18 +38,10 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(
-        Order,
-        on_delete=models.CASCADE,
-        related_name='items',
-        verbose_name='Заказ',
-    )
-    item = models.ForeignKey(
-        Item, on_delete=models.CASCADE, verbose_name='Товар',)
-    quantity = models.PositiveIntegerField(
-        default=1, verbose_name='Количество',)
-    price = models.DecimalField(
-        max_digits=10, decimal_places=2, verbose_name='Цена',)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items', verbose_name='Заказ')
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, verbose_name='Товар')
+    quantity = models.PositiveIntegerField(default=1, verbose_name='Количество')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
 
     class Meta:
         verbose_name = 'Товар в заказе'
@@ -88,8 +63,7 @@ class ShippingAddress(models.Model):
     phone = models.CharField(max_length=20, verbose_name='Телефон',)
     address_line_1 = models.CharField(max_length=200, verbose_name='Адрес',)
     address_line_2 = models.CharField(max_length=200, blank=True, null=True, verbose_name='Адрес (дополнительно)',)
-    order = models.OneToOneField(
-        Order, on_delete=models.CASCADE, related_name='shipping_address', verbose_name='Заказ',)
+    order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name='shipping_address', verbose_name='Заказ')
 
     class Meta:
         verbose_name = 'Адрес доставки'
