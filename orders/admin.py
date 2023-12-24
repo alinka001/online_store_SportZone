@@ -31,12 +31,12 @@ class OrderItemAdmin(admin.ModelAdmin):
     total_price_field.short_description = 'Общая цена'
 
 
-class ShippingAddressAdmin(admin.ModelAdmin):
-    list_display = ('id', 'first_name', 'last_name', 'email',
-                    'phone', 'address_line_1', 'address_line_2',)
-    search_fields = ('first_name', 'last_name', 'email',)
+# class ShippingAddressAdmin(admin.ModelAdmin):
+    # list_display = ('id', 'first_name', 'last_name', 'email',
+    #                 'phone', 'address_line_1', 'address_line_2',)
+    # search_fields = ('first_name', 'last_name', 'email',)
 
 
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderItem, OrderItemAdmin)
-admin.site.register(ShippingAddress, ShippingAddressAdmin)
+admin.site.register(ShippingAddress)

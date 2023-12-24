@@ -57,12 +57,18 @@ class OrderItem(models.Model):
 
 
 class ShippingAddress(models.Model):
-    first_name = models.CharField(max_length=50, verbose_name='Имя',)
-    last_name = models.CharField(max_length=50, verbose_name='Фамилия',)
-    email = models.EmailField(verbose_name='Почта',)
-    phone = models.CharField(max_length=20, verbose_name='Телефон',)
-    address_line_1 = models.CharField(max_length=200, verbose_name='Адрес',)
-    address_line_2 = models.CharField(max_length=200, blank=True, null=True, verbose_name='Адрес (дополнительно)',)
+    first_name = models.CharField(max_length=50, verbose_name='Имя')
+    last_name = models.CharField(max_length=50, verbose_name='Фамилия')
+    email = models.EmailField(verbose_name='Почта')
+    phone = models.CharField(max_length=20, verbose_name='Телефон')
+    city = models.CharField(max_length=200, verbose_name='Адрес')
+    street = models.CharField(max_length=200, verbose_name='Улица')
+    street_number = models.CharField(max_length=200, verbose_name='Номер')
+    code = models.CharField(max_length=200, verbose_name='Код домофона')
+    floor = models.CharField(max_length=200, verbose_name='Этаж')
+    entrance = models.CharField(max_length=200, verbose_name='Подъезд')
+    flat = models.CharField(max_length=200, verbose_name='Квартира')
+    comment = models.CharField(max_length=200, verbose_name='Комментарий', null=True, blank=True)
     order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name='shipping_address', verbose_name='Заказ')
 
     class Meta:
@@ -71,8 +77,13 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return f"""
-        {self.address_line_1} {self.address_line_2}
         Для: {self.first_name} {self.last_name},
         Почта: {self.email},
         Телефон: {self.phone}
+        Адрес: 
+        Город: {self.city}
+        Улица: {self.street}, {self.street_number}
+        Подъезд: {self.entrance}
+        Этаж: {self.floor}
+        Квартира: {self.flat}
         """

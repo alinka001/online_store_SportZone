@@ -48,11 +48,12 @@
 {#    </section>#}
 
 <section class="sales">
+<div class="salesContainer">
     {% for item in page_obj %}
     <article class="cart">
         <span class="image">
         {% if item.image %}
-            <img src="{{ item.image.url }}" alt="" style="width: 353px; height: 326px;" />
+            <img src="{{ item.image.url }}" alt=""/>
         {% else %}
             <img src="{% static "images/pic01.jpg" %}" alt="" />
         {% endif %}
@@ -61,17 +62,27 @@
             <div class="tag">
                 <object>
                     {% for tag in item.tags.all %}
-                        <a href="{% url 'store:tag_details' tag.slug %}" style="color: white">{{ tag }}</a>
+                        <a class="category" href="{% url 'store:tag_details' tag.slug %}" >{{ tag }}</a>
                         {% if not forloop.last %},{% endif %}
                     {% endfor %}
                 </object><br />
             </div>
-            <h2>{{ item.title }}</h2>
+            <h2 class="cartTitle">{{ item.title }}</h2>
             <div class="content">
                 <p>{{ item.description|truncatechars:150 }}</p>
+            </div>
+            <div class="price">
+                 {% if item.old_price %}
+                     <p>Старая цена: {{ item.old_price }} рублей</p>
+                     <p>Новая цена: {{ item.price }} рублей </p>
+                {% else %}
+                     <p>Цена: {{ item.price }} рублей </p>
+                {% endif %}
+
             </div>
         </a>
     </article>
     {% endfor %}
+</div>
 </section>
 {% endblock %}

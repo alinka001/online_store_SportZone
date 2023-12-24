@@ -1,7 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 {% load static %}
+    <div class="containerItem">
 <h2>{{ item.title }}</h2>
 <p>Товар принадлежит к категории
 {% for tag in item.tags.all %}
@@ -9,22 +11,31 @@
     {% if not forloop.last %},{% endif %}
 {% endfor %}
 </p>
+    <div class="imgDescr" style="display: flex; justify-content: left">
 {% if item.image %}
-    <p><span class="image left"><img src="{{ item.image.url }}" alt="" style="max-width: 200px; max-height: 200px;"/>
+    <span class="imageItem"><img src="{{ item.image.url }}" alt="" style="max-width: 300px; max-height: 300px;"/></span>
 {% else %}
-    <p><span class="image left"><img src="{% static "images/pic14.jpg" %}" alt="" />
+    <span class="imageItem"><img src="{% static "images/pic14.jpg" %}" alt="" /></span>
 {% endif %}
+
+    <div class="descriptionItem">
+        <p>{{ item.description }}</p>
+    </div>
+    </div>
+
+    <div class="priceInfo">
+{% if item.old_price %}
+    <p>Старая цена: {{ item.old_price }} рублей</p>
+    <p>Новая цена: {{ item.price }}  рублей </p>
+{% else %}
+    <p>Цена: {{ item.price }} рублей </p>
+{% endif %}
+</div>
+        <div class="buttons">
     <a href="{% url 'cart:add_to_cart' item.slug %}" class="button small" style="margin-top:10px;">
         Добавить в корзину</a>
     <a href="{% url 'favs:add_to_favorites' item.slug %}" class="button small" style="margin-top:10px;">
             Добавить в избранное</a>
-    </span>
-    {{ item.description }}{{ item.description }}
-</p>
-{% if item.old_price %}
-    <p>Старая цена: <s>{{ item.old_price }} рублей</s>
-    Новая цена: <b>{{ item.price }}</b> рублей </p>
-{% else %}
-    <p>Цена: <b>{{ item.price }}</b> рублей </p>
-{% endif %}
+       </div>
+    </div>
 {% endblock %} 
