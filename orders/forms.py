@@ -16,11 +16,14 @@ class OrderCreateForm(PlaceholderForm):
     last_name = forms.CharField(max_length=100, help_text='Фамилия')
     email = forms.EmailField(help_text='Email')
     phone = forms.CharField(max_length=20, help_text='Телефон')
-    city = forms.CharField(max_length=100, help_text='Адрес')
-    city = forms.CharField(max_length=100, help_text='Адрес')
-    city = forms.CharField(max_length=100, help_text='Адрес')
-    city = forms.CharField(max_length=100, help_text='Адрес')
-    city = forms.CharField(max_length=100, help_text='Адрес')
+    city = forms.CharField(max_length=100, help_text='Город')
+    street = forms.CharField(max_length=100, help_text='Улица')
+    street_number = forms.CharField(max_length=100, help_text='Номер')
+    code = forms.CharField(max_length=100, help_text='Код домофона')
+    floor = forms.CharField(max_length=100, help_text='Этаж')
+    entrance = forms.CharField(max_length=100, help_text='Подъезд')
+    flat = forms.CharField(max_length=100, help_text='Квартира')
+    comment = forms.CharField(max_length=100, help_text='Комментарий')
     address_line_2 = forms.CharField(
         max_length=100,
         required=False,

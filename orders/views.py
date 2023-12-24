@@ -50,8 +50,14 @@ def create_order(request):
                 last_name=form.cleaned_data['last_name'],
                 email=form.cleaned_data['email'],
                 phone=form.cleaned_data['phone'],
-                address_line_1=form.cleaned_data['address_line_1'],
-                address_line_2=form.cleaned_data['address_line_2'],
+                city=form.cleaned_data['city'],
+                street=form.cleaned_data['street'],
+                street_number=form.cleaned_data['street_number'],
+                code=form.cleaned_data['code'],
+                floor=form.cleaned_data['floor'],
+                entrance=form.cleaned_data['entrance'],
+                flat=form.cleaned_data['flat'],
+                comment=form.cleaned_data['comment'],
                 order=order,
             )
 
