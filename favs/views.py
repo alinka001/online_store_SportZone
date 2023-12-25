@@ -8,30 +8,20 @@ from .models import Favorites, FavoritesItem
 
 @login_required
 def favorites(request):
-    """
-    Представление для вывода всех объектов
-    товаров избранного.
-    """
     favorites = Favorites.objects.filter(user=request.user).first()
-
     if not favorites:
         favorites = Favorites.objects.create(user=request.user)
-
     context = {
         'favorite_items': FavoritesItem.objects.filter(favorites=favorites),
         'favorites': favorites
     }
-
     return render(request, 'favs/favorites.html', context)
+
 
 @login_required
 def add_to_favorites(request, item_slug):
-    """
-    Представление для добавления товара в избранное.
-    """
     item = get_object_or_404(Item, slug=item_slug)
     favorites, _ = Favorites.objects.get_or_create(user=request.user)
-
     favorite_item, created = FavoritesItem.objects.get_or_create(
         favorites=favorites,
         item=item
@@ -43,12 +33,10 @@ def add_to_favorites(request, item_slug):
 
 @login_required
 def delete_favorite_item(request, item_slug):
-    """
-    Представление для удаления объекта товара в корзине.
-    """
     favorite_item = FavoritesItem.objects.get(
         favorites=Favorites.objects.get(user=request.user),
         item=get_object_or_404(Item, slug=item_slug)
     )
     favorite_item.delete()
     return redirect('favs:favorites')
+
