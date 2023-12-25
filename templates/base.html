@@ -40,13 +40,15 @@
                             {% block content %}
 
                             {% endblock %}
-							<!-- Paginator -->
-							{% if page_obj %}<div class="paginatorStyle" style="text-align: center;"><hr>{% include 'components/paginator.html' %}</div>{% endif %}
+
 						</div>
 					</div>
+                <!-- Paginator -->
+							{% if page_obj %}<div class="paginatorStyle" style="text-align: center;">{% include 'components/paginator.html' %}</div>{% endif %}
 				<!-- Footer -->
-                	{% include 'components/footer.html' %}
+        {% include 'components/footer.html' %}
 			</div>
+
 		<!-- Scripts -->
 {#			<script src={% static "assets/js/jquery.min.js"%}></script>#}
 {#			<script src={% static "assets/js/browser.min.js"%}></script>#}

@@ -15,6 +15,15 @@ body, html{
     height: 100%;
 }
 
+#wrapper{
+    /*position: relative;*/
+    /*min-height: 100vh;*/
+}
+#main{
+    /*padding-bottom: 90px;*/
+    position: relative;
+    min-height: 80vh;
+}
 
 #header{
     margin: 0 auto;
@@ -77,6 +86,24 @@ body, html{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.cartCounter{
+    font-size: 14px;
+    color: white;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 2px;
+
+
+
+}
+.cartCounterContainer{
+    background-color: #dc3545;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin-right: 15px;
 }
 
 /*main-page*/
@@ -146,20 +173,26 @@ body, html{
     color: black;
 }
 
+
+
 .footerNav{
     background-color: #999999;
     /*position: absolute;*/
     /*left: 0;*/
     /*bottom: 0;*/
     width: 100%;
-    height: 100px;
+    height: 77px;
     padding: 4px 20px;
     display: flex;
-  justify-content: end;
+    justify-content: end;
 }
 
 .footerNav h2{
     margin-right: 10px;
+}
+
+.icons a{
+    color: black;
 }
 
 .container{
@@ -235,4 +268,21 @@ body, html{
     margin-top: 10px;
     border-radius: 10px;
     margin-right: 20px;
+}
+
+/*paginator*/
+
+.paginationStyle{
+    text-decoration: none;
+    color: black;
+
+}
+
+.paginator{
+    color: #000000;
+    border-radius: 5px;
+}
+
+.disabled{
+    color:gray;
 }

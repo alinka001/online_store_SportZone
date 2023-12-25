@@ -8,32 +8,32 @@
         <!-- Logo -->
           <a href="{% url 'store:home' %}" class="logo">
               <div class="logoNav">
-                <span class="symbol"><img src="{% static "images/logo3.png" %}" alt="" /></span>
-                <span class="title">SportZone</span>
+                  <span class="symbol"><img src="{% static "images/logo3.png" %}" alt="" /></span>
+                  <span class="title">SportZone</span>
               </div>
           </a>
-
         <!-- Nav -->
-   <div class="navigation">
-                    <a href="{% url 'store:tag_list' %}">Каталог</a>
-    </div>
-
-        <div class="navIcons">
-
-                    <a href="{% url 'favs:favorites' %}">
-                    <img src ="{% static "images/heart-regular.svg" %}" width="40" height="40" ></a>
-
-                    <a href="{% url 'cart:cart' %}">
-                    <img src ="{% static "images/cart-shopping-solid.svg" %}" width="40" height="40" ></a>
-
-                    {% if cart_item_count.total_cart_items != None %}
-                        <a>{{ cart_item_count.total_cart_items }}</a>
-                    {% elif cart_item_count.total_cart_items == None %}
-                        <a> 0 </a>
-                    {% endif %}
-                   <a href="{% url 'users:profile' %}">
-                    <img src ="{% static "images/circle-user-solid.svg" %}" width="40" height="40" ></a>
+        <div class="navigation">
+            <a href="{% url 'store:tag_list' %}">Каталог</a>
         </div>
 
+        <div class="navIcons">
+            <a href="{% url 'favs:favorites' %}">
+                <img src ="{% static "images/heart-regular.svg" %}" width="40" height="40" ></a>
+
+            <a href="{% url 'cart:cart' %}">
+                <img src ="{% static "images/cart-shopping-solid.svg" %}" width="40" height="40" ></a>
+
+            <div class="cartCounterContainer">
+                {% if cart_item_count.total_cart_items != None %}
+                    <a class="cartCounter"> {{ cart_item_count.total_cart_items }}</a>
+                {% elif cart_item_count.total_cart_items == None %}
+                    <a class="cartCounter"> 0 </a>
+
+                {% endif %}
+            </div>
+            <a href="{% url 'users:profile' %}">
+                <img src ="{% static "images/circle-user-solid.svg" %}" width="40" height="40" ></a>
+        </div>
     </div>
 </header>
