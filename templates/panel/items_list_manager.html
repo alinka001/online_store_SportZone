@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div style="background-color: #999999; margin: auto;  border-radius: 25%">
+        <a href="{% url 'manager:add_tag' %}">
+        <img src ="{% static "images/plus-solid.svg" %}" width="25" height="25" style="left: auto; border-radius: 50%" ></a>
+    </div>
+<h2>Категории</h2>
+
+    <table class="alt">
+        <thead>
+{#        <tr>#}
+{#            <th>Название</th>#}
+{#        </tr>#}
+        </thead>
+        <tbody>
+        <hr>
+        {% for item in items %}
+            <tr>
+                <td>
+                    {{ tag.name }}
+                </td>
+
+                <td style="border: none; background-color: #ffffff;" align="center">
+                    <a href="{% url 'manager:delete_tag' tag.slug %}">
+                        <img src ="{% static "images/garbage.svg" %}" width="25" height="25" ></a>
+                </td>
+                <td style="border: none; background-color: #ffffff;" align="center">
+{#                    <a href="{% url 'manager:update_tag' cart_item.item.slug %}">#}
+{#                        <img src ="{% static "images/pen-solid.svg" %}" width="25" height="25" ></a>#}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock%}

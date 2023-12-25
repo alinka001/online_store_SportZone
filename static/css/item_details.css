@@ -1,0 +1,29 @@
+.containerItem{
+    display: flex;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.containerItem h2{
+    font-size: 24px;
+
+}
+
+.imgDescr{
+    width: 800px;
+    margin: 0 auto;
+}
+
+.imageItem{
+    width: 40%;
+}
+
+.descriptionItem{
+    margin-left: 20px;
+
+}
+
+.descriptionItem p{
+    font-size: 20px;
+    color:gray;
+}

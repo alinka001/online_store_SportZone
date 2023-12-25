@@ -1,0 +1,307 @@
+*{
+
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+
+body, html{
+    /*position: relative;*/
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#wrapper{
+    /*position: relative;*/
+    /*min-height: 100vh;*/
+}
+#main{
+    /*padding-bottom: 90px;*/
+    position: relative;
+    min-height: 80vh;
+}
+
+#header{
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgba(19, 86, 9, 0.78);
+    margin-bottom: 40px;
+}
+
+.inner{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.inner a{
+    display: block;
+    width: 50px;
+    height: 50px;
+   color: white;
+}
+
+.symbol{
+    display: flex;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+
+}
+
+.symbol img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.navIcons{
+    display: flex;
+
+}
+
+.logoNav{
+    display: flex;
+    width: 150px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation a{
+    text-align: center;
+    color: white;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartCounter{
+    font-size: 14px;
+    color: white;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 2px;
+
+
+
+}
+.cartCounterContainer{
+    background-color: #dc3545;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+
+
+        /*main-page*/
+
+
+
+.sales{
+    padding: 0 20px;
+}
+
+.content{
+    background-color: rgba(224, 96, 106, 0.78);
+    text-align: center;
+    border-radius: 10px;
+}
+
+
+.salesContainer{
+    max-width: 1120px;
+    margin: 0 auto;
+     display: flex;
+    flex-wrap: wrap;
+}
+.cart{
+    width: 350px;
+    margin: 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+.image{
+    display: flex;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.cartTitle{
+    font-size: 24px;
+    margin: 5px 0 5px;
+}
+
+.cartTitle{
+    color: black;
+}
+
+.cartTitle:hover{
+    color: green;
+}
+
+.category:hover{
+    color:chartreuse;
+
+}
+
+.cart a{
+    color: black;
+}
+
+.tag a{
+    color: black;
+ }
+
+.content p{
+    color: black;
+}
+
+
+
+.footerNav{
+    background-color: #999999;
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
+    width: 100%;
+    height: 77px;
+    padding: 4px 20px;
+    display: flex;
+    justify-content: end;
+}
+
+.footerNav h2{
+    margin-right: 10px;
+}
+
+.icons a{
+    color: black;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+    /*background-color: rgba(153, 153, 153, 0.2);*/
+
+
+}
+
+.price{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.price p{
+    margin-top: 7px;
+    display: block;
+}
+
+
+
+/*item_details*/
+
+
+
+.containerItem{
+    max-width: 1120px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(153, 153, 153, 0.2);
+    padding: 25px 25px 25px 25px;
+    border-radius: 25px;
+
+}
+
+.containerItem h2{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.imgDescr{
+    width: 800px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.imageItem{
+    width: 40%;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.descriptionItem{
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding-top: 20px;
+}
+
+.descriptionItem p{
+    font-size: 20px;
+    color:gray;
+    margin-bottom: 10px;
+}
+.buttons{
+    display: flex;
+}
+
+.buttons a{
+    width: 200px;
+    height:60px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    background-color: green;
+    align-items: center;
+    margin-top: 10px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+/*paginator*/
+
+.paginationStyle{
+    text-decoration: none;
+    color: black;
+
+}
+
+.paginator{
+    color: #000000;
+    border-radius: 5px;
+}
+
+.disabled{
+    color:gray;
+}

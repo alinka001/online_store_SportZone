@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static "/css/cart.css"%}" />
+{% endblock %}
+
+{% block content %}
+<h1>Корзина</h1>
+{% if cart_items %}
+    <section>
+        <div class="table-wrapper">
+            <table class="alt">
+                <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cart_item in cart_items %}
+                    <tr>
+                        <td><a href="{% url 'store:item_details' cart_item.item.slug %}">{{ cart_item.item.title }}</a></td>
+                        <td>
+                            <div class="count">
+                                <a class="countPlus" href="{% url 'cart:minus_cart_item' cart_item.item.slug %}">-</a>
+                                <div class="quantity">{{ cart_item.quantity }}</div>
+                                <a class="countMinus" href="{% url 'cart:plus_cart_item' cart_item.item.slug %}">+</a>
+                            </div>
+                        </td>
+                        <td class="cart-item-total-price" data-cart-item-id="{{ cart_item.id }}">{{ cart_item.total_price }}</td>
+                        <td style="border: none; background-color: #ffffff;" align="center">
+                            <a href="{% url 'cart:delete_cart_item' cart_item.item.slug %}">
+                                <img src ="{% static "images/garbage.svg" %}" width="25" height="25" >
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="2"></td>
+                    <td><u><b><span id="cart-total-price" data-cart-id="{{ cart.id }}">{{ cart.total_price }}</span></b></u></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+    <div style="text-align: justify;">
+        <a href="{% url 'store:home' %}" style="float: left;" class="button">Продолжить покупки</a>
+        <a href="{% url 'checkout:checkout' %}" style="float: right;" class="button">Оформить заказ</a>
+    </div>
+{% else %}
+    <p>Ваша корзина пуста.</p>
+{% endif %}
+{% endblock %}

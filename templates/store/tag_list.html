@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+    <h2>Список всех категорий</h2>
+    <hr>
+{% for tag in tags %}
+    <a href="{% url 'store:filtered_by_tag' tag.slug %}"><b>{{ tag.name }}</b></a>
+{% endfor %}
+    <section class="sales">
+<div class="salesContainer">
+    {% for item in page_obj %}
+    <article class="cart">
+        <span class="image">
+        {% if item.image %}
+            <img src="{{ item.image.url }}" alt=""/>
+        {% else %}
+            <img src="{% static "images/pic01.jpg" %}" alt="" />
+        {% endif %}
+        </span>
+        <a href="{% url 'store:item_details' item.slug %}">
+            <div class="tag">
+                <object>
+                    {% for tag in item.tags.all %}
+                        <a class="category" href="{% url 'store:tag_details' tag.slug %}" >{{ tag }}</a>
+                        {% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                </object><br />
+            </div>
+            <h2 class="cartTitle">{{ item.title }}</h2>
+            <div class="content">
+                <p class="sale">Скидка</p>
+            </div>
+            <div class="price">
+                 {% if item.old_price %}
+                     <p>Старая цена: {{ item.old_price }} рублей</p>
+                     <p>Новая цена: {{ item.price }} рублей </p>
+                {% else %}
+                     <p>Цена: {{ item.price }} рублей </p>
+                {% endif %}
+
+            </div>
+        </a>
+    </article>
+    {% endfor %}
+</div>
+</section>
+{% endblock %}

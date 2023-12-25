@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static "/css/cart.css"%}" />
+{% endblock %}
+
+{% block content %}
+<h1>Избранное</h1>
+{% if favorite_items %}
+  <section>
+    <div class="table-wrapper">
+      <table class="alt">
+        <thead>
+          <tr>
+            <th>Название</th>
+            <th>Цена</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for favorite_item in favorite_items %}
+          <tr>
+            <td><a href="{% url 'store:item_details' favorite_item.item.slug %}">{{ favorite_item.item.title }}</a></td>
+            <td>
+                {{ favorite_item.item.price }}
+            </td>
+{#            <td class="cart-item-total-price" data-cart-item-id="{{ favorite_item.id }}">{{ favorite_item.total_price }}</td>#}
+            <td style="border: none; background-color: #ffffff;" align="center">
+              <a href="{% url 'favs:delete_favorite_item' favorite_item.item.slug %}">
+                <img src ="{% static "images/garbage.svg" %}" width="25" height="25" >
+              </a>
+            </td>
+          <td style="border: none; background-color: #ffffff;" align="center">
+              <a href="{% url 'cart:add_to_cart' favorite_item.item.slug %}">
+                <img src ="{% static "images/cart-shopping-solid.svg" %}" width="25" height="25" >
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+  </section>
+  <div style="text-align: justify;">
+    <a href="{% url 'store:tag_list' %}" style="float: left;" class="button">Вернуться к каталогу</a>
+{#    <a href="{% url 'checkout:checkout' %}" style="float: right;" class="button">Оформить заказ</a>#}
+  </div>
+{% else %}
+  <p>Вы еще не добавили ни одного товара в избранное.</p>
+{% endif %}
+{% endblock %}dblock %}
