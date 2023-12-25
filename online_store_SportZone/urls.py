@@ -11,7 +11,8 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('', include('store.urls')),
     path('', include('django.contrib.auth.urls')),
-    path('favorites', include('favs.urls')),
+    path('favorites/', include('favs.urls')),
+    path('manager/', include('manager_panel.urls')),
 ]
 
 if settings.DEBUG:

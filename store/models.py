@@ -5,15 +5,8 @@ from taggit.models import GenericTaggedItemBase, TagBase
 
 
 class ItemTag(TagBase):
-    image = models.ImageField(
-        upload_to='categories/',
-        verbose_name='Изображение',
-        blank=True
-    )
-    description = models.TextField(
-        blank=True,
-        verbose_name='Описание',
-        )
+    image = models.ImageField(upload_to='categories/', verbose_name='Изображение', blank=True)
+    description = models.TextField(blank=True, verbose_name='Описание')
 
     class Meta:
         verbose_name = _("Категория")

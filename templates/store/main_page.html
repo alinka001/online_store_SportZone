@@ -2,51 +2,6 @@
 
 {% block content %}
 {% load static %}
-{#<section class="swiper">#}
-{#      <!-- Slider main container -->#}
-{#      <!-- Additional required wrapper -->#}
-{#      <div class="swiper-wrapper">#}
-{#        <!-- Slides -->#}
-{#        <div class="swiper-slide slide">#}
-{#          <div class="slider-img">#}
-{#            <img#}
-{#              src="https://www.globality-health.com/wp-content/uploads/2020/08/AdobeStock_286933595-Blog-Sport1-2000x936.jpeg"#}
-{#              alt="#"#}
-{#            />#}
-{#          </div>#}
-{#        </div>#}
-{##}
-{#        <div class="swiper-slide slide">#}
-{#          <div class="slider-img">#}
-{#            <img#}
-{#              src="https://sun6-21.userapi.com/impf/6OePjF8wRpyjGKWp4IOsJc2MQLEID-WEox9-oQ/Tp8jF95YqJ4.jpg?size=1920x768&quality=95&crop=0,5,2400,958&sign=4ce847f6fdb5771be8b11e733a375a7f&type=cover_group"#}
-{#              alt="#"#}
-{#            />#}
-{#          </div>#}
-{#        </div>#}
-{##}
-{#        <div class="swiper-slide slide">#}
-{#          <div class="slider-img">#}
-{#            <img#}
-{#              src="https://sun6-21.userapi.com/impf/6OePjF8wRpyjGKWp4IOsJc2MQLEID-WEox9-oQ/Tp8jF95YqJ4.jpg?size=1920x768&quality=95&crop=0,5,2400,958&sign=4ce847f6fdb5771be8b11e733a375a7f&type=cover_group"#}
-{#              alt="#"#}
-{#            />#}
-{#          </div>#}
-{#        </div>#}
-{#      </div>#}
-{##}
-{#      <!-- If we need pagination -->#}
-{#      <div class="swiper-pagination"></div>#}
-{##}
-{#      <!-- If we need navigation buttons -->#}
-{#      <div class="swiper-button-prev"></div>#}
-{#      <div class="swiper-button-next"></div>#}
-{##}
-{#      <!-- If we need scrollbar -->#}
-{#      <div class="swiper-scrollbar"></div>#}
-{#      <!-- </div> -->#}
-{#    </section>#}
-
 <section class="sales">
 <div class="salesContainer">
     {% for item in page_obj %}
@@ -69,7 +24,7 @@
             </div>
             <h2 class="cartTitle">{{ item.title }}</h2>
             <div class="content">
-                <p>{{ item.description|truncatechars:150 }}</p>
+                <p class="sale">Скидка</p>
             </div>
             <div class="price">
                  {% if item.old_price %}
