@@ -24,9 +24,4 @@ class OrderCreateForm(PlaceholderForm):
     entrance = forms.CharField(max_length=100, help_text='Подъезд')
     flat = forms.CharField(max_length=100, help_text='Квартира')
     comment = forms.CharField(max_length=100, help_text='Комментарий')
-    address_line_2 = forms.CharField(
-        max_length=100,
-        required=False,
-        help_text='Адрес (дополнительно)'
-    )
     payment_method = forms.ChoiceField(choices=Order.PAYMENT_METHOD_CHOICES)
