@@ -106,7 +106,9 @@ body, html{
     margin-right: 15px;
 }
 
-/*main-page*/
+
+
+        /*main-page*/
 
 
 
@@ -117,6 +119,7 @@ body, html{
 .content{
     background-color: rgba(224, 96, 106, 0.78);
     text-align: center;
+    border-radius: 10px;
 }
 
 
@@ -208,6 +211,9 @@ body, html{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+    /*background-color: rgba(153, 153, 153, 0.2);*/
+
 
 }
 
@@ -229,9 +235,13 @@ body, html{
 
 
 .containerItem{
-
     max-width: 1120px;
     margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(153, 153, 153, 0.2);
+    padding: 25px 25px 25px 25px;
+    border-radius: 25px;
+
 }
 
 .containerItem h2{

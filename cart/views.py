@@ -79,3 +79,5 @@ def minus_cart_item(request, item_slug):
     cart_item.quantity -= 1
     cart_item.save()
     return redirect('cart:cart')
+
+

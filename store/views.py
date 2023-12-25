@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import get_object_or_404, render
 
 from .models import Item, ItemTag
@@ -5,9 +7,10 @@ from .paginator import paginator
 
 
 def store(request):
-    items = Item.objects.filter(is_available=True)
+    items = Item.objects.filter(is_sale=True)
+    random_items = random.sample(list(items), 3)
     context = {
-        'page_obj': paginator(request, items, 6)
+        'page_obj': paginator(request, random_items, 6)
     }
 
     return render(request, 'store/main_page.html', context)

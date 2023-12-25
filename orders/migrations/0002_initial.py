@@ -10,20 +10,25 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('cart', '0001_initial'),
         ('store', '0001_initial'),
+        ('orders', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='cartitem',
+            model_name='orderitem',
             name='item',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='store.item', verbose_name='Товар'),
         ),
         migrations.AddField(
-            model_name='cart',
+            model_name='orderitem',
+            name='order',
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='items', to='orders.order', verbose_name='Заказ'),
+        ),
+        migrations.AddField(
+            model_name='order',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='carts', to=settings.AUTH_USER_MODEL, verbose_name='Покупатель'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='orders', to=settings.AUTH_USER_MODEL, verbose_name='Покупатель'),
         ),
     ]

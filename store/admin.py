@@ -5,9 +5,9 @@ from .models import Item, ItemTag
 
 class ItemAdmin(admin.ModelAdmin):
     list_display = ('title', 'short_description', 'slug', 'price',
-                    'old_price', 'is_available', 'tag_list',)
-    search_fields = ('title', 'description', 'tags__name',)
-    list_filter = ('is_available', 'tags',)
+                    'old_price', 'is_available', 'tag_list', 'is_sale')
+    search_fields = ('title', 'tags__name',)
+    list_filter = ('is_available', 'tags', 'is_sale')
     prepopulated_fields = {'slug': ('title',)}
 
     def short_description(self, obj):
@@ -27,7 +27,7 @@ class ItemAdmin(admin.ModelAdmin):
 
 
 class ItemTagAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'short_description', 'item_list',)
+    list_display = ('name', 'slug', 'item_list',)
 
     def short_description(self, obj):
         if len(obj.description) > 100:
