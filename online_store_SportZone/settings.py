@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'cart',
     'fontawesomefree',
     'favs',
+    'manager_panel',
 
 ]
 

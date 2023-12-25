@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.views.decorators.csrf import csrf_exempt
 
 from store.models import Item
 from .models import Cart, CartItem
@@ -44,6 +45,8 @@ def add_to_cart(request, item_slug):
     return redirect('cart:cart')
 
 
+
+
 @login_required
 def delete_cart_item(request, item_slug):
     """
@@ -58,29 +61,21 @@ def delete_cart_item(request, item_slug):
 
 
 @login_required
-def update_cart_item(request):
-    """
-    Представление для обработки AJAX-запроса
-    и последущего обновления БД и отправки на
-    страницу JSON-ответа с необходимыми данными.
-    """
-    if request.method == 'POST' and request.is_ajax():
-        cart_item_id = request.POST.get('cart_item_id')
-        new_quantity = int(request.POST.get('new_quantity'))
-        cart_id = int(request.POST.get('cart_id'))
+def plus_cart_item(request, item_slug):
+    cart_item = CartItem.objects.get(
+        cart=Cart.objects.get(user=request.user),
+        item=get_object_or_404(Item, slug=item_slug)
+    )
+    cart_item.quantity += 1
+    cart_item.save()
+    return redirect('cart:cart')
 
-        cart = Cart.objects.get(pk=cart_id)
-        cart_item = get_object_or_404(CartItem, id=cart_item_id)
-        cart_item.quantity = new_quantity
-        cart_item.save()
-        return JsonResponse({
-            'success': True,
-            'cart_item_id': cart_item.id,
-            'cart_item_quantity': cart_item.quantity,
-            'cart_item_total_price': cart_item.total_price,
-            'cart_total_price': cart.total_price
-        })
-    else:
-        return JsonResponse({
-            'success': False, 'error': 'Invalid request method'
-        })
+@login_required
+def minus_cart_item(request, item_slug):
+    cart_item = CartItem.objects.get(
+        cart=Cart.objects.get(user=request.user),
+        item=get_object_or_404(Item, slug=item_slug)
+    )
+    cart_item.quantity -= 1
+    cart_item.save()
+    return redirect('cart:cart')
