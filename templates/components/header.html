@@ -19,14 +19,20 @@
     </div>
 
         <div class="navIcons">
+
                     <a href="{% url 'favs:favorites' %}">
                     <img src ="{% static "images/heart-regular.svg" %}" width="40" height="40" ></a>
 
                     <a href="{% url 'cart:cart' %}">
                     <img src ="{% static "images/cart-shopping-solid.svg" %}" width="40" height="40" ></a>
 
+                    {% if cart_item_count.total_cart_items != None %}
+                        <a>{{ cart_item_count.total_cart_items }}</a>
+                    {% elif cart_item_count.total_cart_items == None %}
+                        <a> 0 </a>
+                    {% endif %}
                    <a href="{% url 'users:profile' %}">
-                    <img src ="{% static "images/circle-user-solid.svg" %}" width="40" height="40" ></a
+                    <img src ="{% static "images/circle-user-solid.svg" %}" width="40" height="40" ></a>
         </div>
 
     </div>

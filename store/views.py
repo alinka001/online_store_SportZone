@@ -7,8 +7,7 @@ from .paginator import paginator
 def store(request):
     items = Item.objects.filter(is_available=True)
     context = {
-        'page_obj': paginator(request, items, 9),
-        'range': [*range(1, 7)],  # For random css styles
+        'page_obj': paginator(request, items, 9)
     }
 
     return render(request, 'store/main_page.html', context)

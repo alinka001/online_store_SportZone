@@ -27,12 +27,6 @@ class Order(models.Model):
         verbose_name_plural = 'Заказы'
         ordering = ['-created_at']
 
-    @property
-    def total_price(self):
-        total_price = sum(
-            order_item.total_price for order_item in self.items.all())
-        return total_price
-
     def __str__(self):
         return f"Заказ номер {self.id} для {self.user}"
 
