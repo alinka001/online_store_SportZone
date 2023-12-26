@@ -12,6 +12,9 @@
         <!-- Nav -->
         <div class="navigation">
             <a href="{% url 'store:tag_list' %}">Каталог</a>
+            {% if request.user.is_superuser%}
+            <a href="{% url 'manager:tag_list_manager' %}">Панель</a>
+            {% endif %}
         </div>
 
         <div class="navIcons">

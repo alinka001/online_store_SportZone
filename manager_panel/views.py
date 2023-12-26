@@ -1,5 +1,7 @@
 from django.shortcuts import redirect
-from store.forms import ItemTagForm
+from django.template.defaultfilters import slugify
+
+from store.forms import ItemTagForm, ItemForm
 from store.models import Item, ItemTag
 from django.shortcuts import render
 from django.contrib.auth.decorators import user_passes_test
@@ -47,9 +49,33 @@ def delete_tag(request, tag_slug):
 '''items'''
 
 
-def items_list(request):
+@admin_required
+def item_list_manager(request):
     items = Item.objects.all()
     context = {
         'items': items
     }
-    return render(request, 'panel/items.html', context)
+    return render(request, 'panel/items_list_manager.html', context)
+
+
+@admin_required
+def add_item(request):
+    if request.method == 'POST':
+        form = ItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            item = form.save(commit=False)
+            item.slug = slugify(item.title)
+            item.save()
+            return redirect('manager:item_list_manager')
+    else:
+
+        form = ItemForm()
+
+    return render(request, 'panel/add_item.html', {'form': form})
+
+
+@admin_required
+def delete_item(request, item_slug):
+    item = Item.objects.get(slug=item_slug)
+    item.delete()
+    return redirect('manager:item_list_manager')

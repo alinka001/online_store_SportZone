@@ -5,7 +5,7 @@
     <h2>Список всех категорий</h2>
     <hr>
 {% for tag in tags %}
-    <a href="{% url 'store:tag_details' tag.slug %}"><b>{{ tag.name }}</b></a>
+    <a href="{% url 'store:filtered_by_tag' tag.slug %}"><b>{{ tag.name }}</b></a>
 {% endfor %}
     <section class="sales">
 <div class="salesContainer">
